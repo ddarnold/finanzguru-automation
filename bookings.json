@@ -1,0 +1,4 @@
+[
+  {"amount": "50", "name": "Groceries", "category": "Lebensmittel", "type": "give"},
+  {"amount": "200", "name": "Salary", "category": "Einkommen", "type": "get"}
+]
