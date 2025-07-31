@@ -1,0 +1,77 @@
+Convert the following transaction data into the following JSON format:
+
+```json
+[
+  {
+    "amount": "5000",
+    "name": "Groceries",
+    "category": "Lebensmittel",
+    "type": "give",
+    "date": "2025-07-29"
+  }
+]
+```
+
+#### 🧾 **Instructions for Data Formatting:**
+
+1. **Amount Formatting**
+
+   * Multiply the decimal amount by 100 and **remove the decimal point**.
+   * For example:
+
+     * `"123.45"` ➝ `"12345"`
+     * `"10.00"` ➝ `"1000"`
+
+2. **Name Extraction**
+
+   * Extract a **clear, human-readable label** for the `"name"` field, using these rules:
+
+     * For **card transactions**: Use merchant name (e.g., `"Lidl"`).
+     * For **bank transfers**: Use the sender name and purpose (e.g., `"Udruženje Građana DIPLOCENTAR • Neoporeziva primanja"`).
+   * Omit irrelevant or technical data such as:
+
+     * Card numbers, exchange rates, internal codes, account numbers, etc.
+
+3. **Transaction Type**
+
+   * Use `"give"` for expenses (money out).
+   * Use `"get"` for income (money in).
+
+4. **Category Assignment**
+
+   * Assign a `"category"` only if you are **reasonably certain**.
+   * Otherwise, use default:
+
+     * `"Sonstige Ausgaben"` for `"give"`
+     * `"Sonstige Einnahmen"` for `"get"`
+   * Categories must come from the following approved list (copy-paste friendly):
+
+```
+Drogerie, Elterngeld, Kapitalerträge, Kindergeld, Leistung der Bundesagentur für Arbeit,
+Lohn / Gehalt, Mieteinnahmen, Rente/Pension, Sonstige Einnahmen, Lebensmittel,
+Lieferservice, Mittagsessen, Restaurants, Supplements, Ausleihe, Bankgebühren, FinanzApp,
+Kredit, Sonstige Finanzausgaben, Spende, Steuern, Bücher & Zeitungen, Gaming,
+In-App-Käufe, Kino, Mitgliedschaft, Musik & Podcasts, Serien & Filme,
+Sonstige Freizeitausgaben, Sport, Urlaub, Veranstaltungen, Apotheke,
+Sonstige Gesundheitsausgaben, Ärztliche Behandlung, Futter & Tierbedarf,
+Tierärztliche Behandlung, Kinderbetreuung, Schule & Förderung,
+Sonstige Kinderausgaben, Taschengeld, Bekleidung, Cloud-Dienste, Elektrohandel,
+Friseur, Geschenke, Mobilfunk, Prime-Mitgliedschaft, Shopping,
+Sonstiger Lifestyle, Auto, Bus & Bahn, Fahrrad, Flüge, Laden,
+Sharing / Gemietet, Tanken, Taxi, Bargeld, Kreditkartenabrechnung, Mama,
+Sonstige Ausgaben, BTC, Bausparvertrag, Kapitalanlage, Sparen,
+Anhängerversicherung, Bauherrenhaftpflichtversicherung, Berufsunfähigkeitsversicherung,
+Betriebliche Altersvorsorge, Bootshaftpflichtversicherung, Brillenversicherung,
+Drohnenhaftpflichtversicherung, Geräteversicherung, Gesetzliche Krankenversicherung,
+Gesetzliche Rentenversicherung, Gewässerschadenhaftpflichtversicherung,
+Haftpflichtversicherung, Hausratversicherung, Jagdhaftpflichtversicherung,
+KFZ-Versicherung, Kapitallebensversicherung, Kombi-Sachversicherung,
+Krankenzusatzversicherung, Lebensversicherung, Motorradversicherung,
+Pflegeversicherung, Photovoltaikhaftpflichtversicherung, Private Krankenversicherung,
+Rechtsschutzversicherung, Reisekrankenversicherung, Rentenversicherung,
+Risikolebensversicherung, Sonstige Sachversicherung, Sonstige Versicherung,
+Tierhaftpflichtversicherung, Tierkrankenversicherung, Unfallversicherung,
+Wohngebäudeversicherung, Wohnwagenversicherung, Zahnzusatzversicherung,
+Bauen / Renovieren, Baufinanzierung, Einrichtung, Gas, Internet & Telefon,
+Miete, Rundfunkgebühren, Sonstiges Wohnen, Strom
+```

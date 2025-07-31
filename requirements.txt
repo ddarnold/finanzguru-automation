@@ -1,2 +1,3 @@
 Appium-Python-Client
 python-dateutil
+python-dotenv

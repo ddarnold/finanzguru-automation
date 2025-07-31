@@ -1,4 +1,16 @@
 [
-  {"amount": "50", "name": "Groceries", "category": "Lebensmittel", "type": "give"},
-  {"amount": "200", "name": "Salary", "category": "Einkommen", "type": "get"}
+  {
+    "amount": "2448",
+    "name": "Souvenir Valencia",
+    "category": "Sonstige Ausgaben",
+    "type": "give",
+    "date": "2025-05-31"
+  },
+  {
+    "amount": "333",
+    "name": "T-Mobile Hotspot",
+    "category": "Internet & Telefon",
+    "type": "give",
+    "date": "2025-05-31"
+  }
 ]
